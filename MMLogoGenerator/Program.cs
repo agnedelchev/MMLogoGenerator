@@ -22,7 +22,7 @@ namespace MMLogoGenerator
                 parseCheck = int.TryParse(input, out n);
             }
             LogoGeneratorClass result = new LogoGeneratorClass(n);
-            result.LogoPrinter();
+            Console.WriteLine(result.ResultLogo());
         }
     }
 }
