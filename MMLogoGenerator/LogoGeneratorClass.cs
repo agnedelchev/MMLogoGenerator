@@ -20,7 +20,7 @@ namespace MMLogoGenerator
             GenerateLogo(inputNumber);
         }
 
-        private string DashAppender(int dashCount)
+        private string DashSegmentBuilder(int dashCount)
         {
             string dashSegment = null;
             StringBuilder dashSegmentBuilder = new StringBuilder();
@@ -42,13 +42,13 @@ namespace MMLogoGenerator
             if (endDash >= 0)
             {
                 StringBuilder lineBuilder = new StringBuilder();
-                lineBuilder.Append(DashAppender(endDash));
-                lineBuilder.Append(StarAppender(endStar));
-                lineBuilder.Append(DashAppender(middleDash));
-                lineBuilder.Append(StarAppender(middleStar));
-                lineBuilder.Append(DashAppender(middleDash));
-                lineBuilder.Append(StarAppender(endStar));
-                lineBuilder.Append(DashAppender(endDash));
+                lineBuilder.Append(DashSegmentBuilder(endDash));
+                lineBuilder.Append(StarSegmentBuilder(endStar));
+                lineBuilder.Append(DashSegmentBuilder(middleDash));
+                lineBuilder.Append(StarSegmentBuilder(middleStar));
+                lineBuilder.Append(DashSegmentBuilder(middleDash));
+                lineBuilder.Append(StarSegmentBuilder(endStar));
+                lineBuilder.Append(DashSegmentBuilder(endDash));
                 string halfLine = lineBuilder.ToString();
                 lineBuilder.Append(halfLine);
                 logoBuilder.Append(lineBuilder.ToString() + '\n');
@@ -60,7 +60,7 @@ namespace MMLogoGenerator
             }
         }
 
-        private string StarAppender(int starCount)
+        private string StarSegmentBuilder(int starCount)
         {
             string starSegment = null;
             StringBuilder starSegmentBuilder = new StringBuilder();
@@ -77,11 +77,11 @@ namespace MMLogoGenerator
             if (middleDash >= 1)
             {
                 StringBuilder lineBuilder = new StringBuilder();
-                lineBuilder.Append(DashAppender(endDash));
-                lineBuilder.Append(StarAppender(stars));
-                lineBuilder.Append(DashAppender(middleDash));
-                lineBuilder.Append(StarAppender(stars));
-                lineBuilder.Append(DashAppender(endDash));
+                lineBuilder.Append(DashSegmentBuilder(endDash));
+                lineBuilder.Append(StarSegmentBuilder(stars));
+                lineBuilder.Append(DashSegmentBuilder(middleDash));
+                lineBuilder.Append(StarSegmentBuilder(stars));
+                lineBuilder.Append(DashSegmentBuilder(endDash));
                 string halfLine = lineBuilder.ToString();
                 lineBuilder.Append(halfLine);
                 logoBuilder.Append(lineBuilder.ToString() + '\n');
