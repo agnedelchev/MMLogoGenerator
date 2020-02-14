@@ -20,8 +20,9 @@ namespace MMLogoGenerator
                 input = Console.ReadLine();
                 parseCheck = int.TryParse(input, out n);
             }
-            LogoGeneratorClass result = new LogoGeneratorClass(n);
-            Console.Write(result.GetLogo());
+            LogoGeneratorClass result = new LogoGeneratorClass();
+            result.LetterWidth = n;
+            Console.WriteLine(result.Logo);
         }
     }
 }

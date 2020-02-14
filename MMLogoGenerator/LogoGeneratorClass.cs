@@ -8,16 +8,30 @@ namespace MMLogoGenerator
 {
     class LogoGeneratorClass
     {
-        private int inputNumber = 0;
+        private int letterWidth = 0;
 
         private StringBuilder logoBuilder = new StringBuilder();
 
         private string logo = null;
 
-        public LogoGeneratorClass(int inputNumber)
+        public LogoGeneratorClass() : this(3)
         {
-            this.inputNumber = inputNumber;
-            GenerateLogo(inputNumber);
+
+        }
+        public LogoGeneratorClass(int letterWidth)
+        {
+            this.letterWidth = letterWidth;
+            GenerateLogo(letterWidth);
+        }
+
+        public string Logo
+        {
+            get { return logo; }
+        }
+
+        public int LetterWidth
+        {
+            set { letterWidth = value; GenerateLogo(value); }
         }
 
         private string DashSegmentBuilder(int dashCount)
@@ -51,12 +65,17 @@ namespace MMLogoGenerator
                 lineBuilder.Append(DashSegmentBuilder(endDash));
                 string halfLine = lineBuilder.ToString();
                 lineBuilder.Append(halfLine);
-                logoBuilder.Append(lineBuilder.ToString() + '\n');
+                logoBuilder.Append(lineBuilder.ToString());
+                if(endDash > 0)
+                {
+                    logoBuilder.Append("\n");
+                }
                 LowerHalfLogoGenerator(endDash - 1, endStar, middleDash + 2, middleStar - 2);
             }
             else
             {
                 logo = logoBuilder.ToString();
+                logoBuilder.Clear();
             }
         }
 
@@ -89,7 +108,7 @@ namespace MMLogoGenerator
             }
             else
             {
-                LowerHalfLogoGenerator(endDash, inputNumber, 1, (inputNumber * 2) - 1);
+                LowerHalfLogoGenerator(endDash, letterWidth, 1, (letterWidth * 2) - 1);
             }
         }
 
