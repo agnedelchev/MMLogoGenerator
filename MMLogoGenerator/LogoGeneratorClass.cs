@@ -8,11 +8,11 @@ namespace MMLogoGenerator
 {
     class LogoGeneratorClass
     {
-        private int inputNumber;
+        private int inputNumber = 0;
 
         private StringBuilder logoBuilder = new StringBuilder();
 
-        private string logo;
+        private string logo = null;
 
         public LogoGeneratorClass(int inputNumber)
         {
@@ -32,7 +32,7 @@ namespace MMLogoGenerator
             return dashSegment;
         }
 
-        public string ResultLogo()
+        public string GetLogo()
         {
             return logo;
         }

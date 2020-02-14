@@ -9,12 +9,11 @@ namespace MMLogoGenerator
     class Program
     {
         static void Main(string[] args)
-        {
-            int n;
-            bool parseCheck;
+        {            
             Console.Write("Enter number N. The number must be an odd integer between 2 and 10000: ");
             string input = Console.ReadLine();
-            parseCheck = int.TryParse(input, out n);
+            int n = 0;
+            bool parseCheck = int.TryParse(input, out n);
             while (parseCheck == false || n % 2 == 0 || n < 2 || n > 10000)
             {
                 Console.Write("Invalid input entered. Input must be an odd integer between 2 and 10000: ");
@@ -22,7 +21,7 @@ namespace MMLogoGenerator
                 parseCheck = int.TryParse(input, out n);
             }
             LogoGeneratorClass result = new LogoGeneratorClass(n);
-            Console.WriteLine(result.ResultLogo());
+            Console.Write(result.GetLogo());
         }
     }
 }
